@@ -30,7 +30,7 @@
 </div>
 <div id="footer">
 	<div id="footer_in">
-		&copy; <a href="http://www.sebastiansulinski.co.uk" title="Web Design Tutorials" target="_blank">Sebastian Sulinski</a>
+		<a href="#" title="Footer" target="_blank">Footer</a>
 	</div>
 </div>
 </body>
