@@ -38,15 +38,15 @@ defined("TEMPLATE_DIR")
 
 // Emails path
 defined("EMAILS_PATH")
-    || define("EMAILS_PATH", ROOTH_PATH.DS."emails");
+    || define("EMAILS_PATH", ROOT_PATH.DS."emails");
 
 // Catalogue images path
 defined("CATALOGUE_PATH")
-    || define("CATALOGUE_PATH", ROOTH_PATH.DS."media".DS."catalogue");
+    || define("CATALOGUE_PATH", ROOT_PATH.DS."media".DS."catalogue");
 
 // Add all above directories to the include path
 set_include_path(implode(PATH_SEPARATOR, array(
-    realpath(ROOT_PATH.DS.CLASSSES_DIR),
+    realpath(ROOT_PATH.DS.CLASSES_DIR),
     realpath(ROOT_PATH.DS.PAGES_DIR),
     realpath(ROOT_PATH.DS.MOD_DIR),
     realpath(ROOT_PATH.DS.INC_DIR),
