@@ -5,9 +5,9 @@ if(!isset($_SESSION)){
 }
 
 // Site domain name with http
-defined("SITE_URL");
+defined("SITE_URL")
     ||define("SITE_URL", "http://".$_SERVER['SERVER_NAME']);
 
 // Directory separator
-defined("DS");
-|| define("DS", DIRECTORY_SEPARATOR);
+defined("DS")
+    || define("DS", DIRECTORY_SEPARATOR);
