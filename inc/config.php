@@ -20,6 +20,10 @@ defined("ROOT_PATH")
 defined("CLASSES_DIR")
     || define("CLASSES_DIR", "classes");
 
+// Pages folder
+defined("PAGES_DIR")
+    || define("PAGES_DIR", "pages");
+
 // Modules folder
 defined("MOD_DIR")
     || define("MOD_DIR", "mod");
@@ -39,3 +43,13 @@ defined("EMAILS_PATH")
 // Catalogue images path
 defined("CATALOGUE_PATH")
     || define("CATALOGUE_PATH", ROOTH_PATH.DS."media".DS."catalogue");
+
+// Add all above directories to the include path
+set_include_path(implode(PATH_SEPARATOR, array(
+    realpath(ROOT_PATH.DS.CLASSSES_DIR),
+    realpath(ROOT_PATH.DS.PAGES_DIR),
+    realpath(ROOT_PATH.DS.MOD_DIR),
+    realpath(ROOT_PATH.DS.INC_DIR),
+    realpath(ROOT_PATH.DS.TEMPLATE_DIR),
+    get_include_path()
+)));
