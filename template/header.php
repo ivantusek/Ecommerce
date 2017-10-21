@@ -6,7 +6,7 @@
     <meta name="description" content="Ecommerce website project" />
     <meta name="keywords" content="Ecommerce website project" />
     <meta http-equiv="imagetoolbar" content="no" />
-    <link href="/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="css/core.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="header">
