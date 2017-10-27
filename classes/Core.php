@@ -6,7 +6,7 @@ class Core {
 
         // Output buffering
         ob_start();
-        require_once('index.php');
+        require_once(Url::getPage());
         ob_get_flush();
 
     }
