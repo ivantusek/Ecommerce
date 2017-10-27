@@ -94,7 +94,8 @@ class Dbase
             $output = "Database qurey failed: " . mysql_error() . "<br/>";
             $output .= "Last SQL query was: " . $this->_last_query;
             die($output);
-        } else {
+        }
+        else {
             $this->_affected_rows = mysql_affected_rows($this->_conndb);
 
         }
