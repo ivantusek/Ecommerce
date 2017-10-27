@@ -120,7 +120,7 @@ class Dbase
     }
 
     public function lastId() {
-        
+
         return mysql_insert_id($this->_conndb);
     }
 }
