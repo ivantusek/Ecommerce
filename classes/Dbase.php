@@ -66,7 +66,7 @@ class Dbase
                 $value = stripslashes($value);
             }
 
-            $value = mysqli_real_escape_string($value);
+            $value = mysql_real_escape_string($value);
 
         } else {
 
