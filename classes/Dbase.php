@@ -99,7 +99,7 @@ class Dbase
             $this->_affected_rows = mysql_affected_rows($this->_conndb);
 
         }
-    }
+    } 
 
     public function fetchAll($sql) {
 
