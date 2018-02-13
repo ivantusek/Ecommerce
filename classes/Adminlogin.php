@@ -6,9 +6,6 @@
 ?>
 
 <?php
-/**
- * Adminlogin Class
- */
 
 class AdminLogin{
 
@@ -41,13 +38,13 @@ class AdminLogin{
 
             $query = "SELECT * FROM admin WHERE adminUser = '$adminUser' AND adminPass = '$adminPass' ";
             $result = $this->db->select($query);
-            if($result != flase){
+            if($result != false){
 
              $value = $result->fetch_assoc();
              Session::set("adminlogin", true);
-             Session::set("adminId", $adminId['adminId']);
-             Session::set("adminUser", $adminId['adminUser']);
-             Session::set("adminName", $adminId['adminName']);
+             Session::set("adminId", $value['adminId']);
+             Session::set("adminUser", $value['adminUser']);
+             Session::set("adminName", $value['adminName']);
 
              header("Location:dashboard.php" );
 
