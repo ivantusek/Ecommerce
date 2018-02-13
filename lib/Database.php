@@ -10,8 +10,8 @@ Class Database{
 
     public $link;
     public $error;
-
-    public function __construct(){
+{
+    public function __construct()
         $this->connectDB();
     }
 
