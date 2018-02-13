@@ -19,12 +19,12 @@ class AdminLogin{
 
     }
 
-    public function adminlogin ($adminUser, $adminPass){
+    public function adminLogin ($adminUser, $adminPass){
 
-        $adminUser = $this->validation($adminUser);
-        $adminPass = $this->validation($adminPass);
+        $adminUser = $this->fm->validation($adminUser);
+        $adminPass = $this->fm->validation($adminPass);
 
-        $adminUser = mysqi_real_escape_string($this->db->link, $adminUser);
+        $adminUser = mysqli_real_escape_string($this->db->link, $adminUser);
         $adminPass = mysqli_real_escape_string($this->db->link, $adminPass);
 
         if(empty($adminUser) || empty($adminPass)){
