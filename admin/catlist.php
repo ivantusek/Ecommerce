@@ -5,7 +5,7 @@
     $cat = new Category();
     if(isset($_GET['delcat'])){
 
-        $id = $_GET['delcat'];
+        //$id = $_GET['delcat'];
         $id = preg_replace('/[^A-Za-z0-9_]/',  '', $_GET['delcat']);
         $delCat = $cat->delCatById($id);
 
