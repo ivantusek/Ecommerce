@@ -59,4 +59,39 @@ class Brand{
 
     }
 
+    public function getBrandById($id){
+
+        $query = "SELECT * FROM brand WHERE brandId = '$id'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function brandUpdate($brandName, $id){
+
+        $brandName = $this->fm->validation($brandName);
+        $brandName = mysqli_real_escape_string($this->db->link, $brandName);
+        $id = mysqli_real_escape_string($this->db->link, $id);
+
+        if(empty($brandName)){
+
+            $msq = "<span class='error'>Brand field must not be empty!</span>";
+            return $msq;
+
+        }
+        else
+        {
+            $query = "UPDATE brand SET brandName = '$brandName' WHERE brandId = '$id'";
+            $updated_row = $this->db->update($query);
+            if($updated_row){
+                $msq = "<span class='success'>Brand Name Updated Successfully!</span>";
+                return $msq;
+            }
+            else
+            {
+                $msq = "<span class='error'>Brand Name Not Updated!</span>";
+                return $msq;
+            }
+        }
+    }
+
 }
