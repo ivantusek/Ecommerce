@@ -65,4 +65,32 @@ class Category{
         return $result;
     }
 
+    public function catUpdate($catName, $id){
+
+        $catName = $this->fm->validation($catName);
+        $catName = mysqli_real_escape_string($this->db->link, $catName);
+        $id = mysqli_real_escape_string($this->db->link, $id);
+
+        if(empty($catName)){
+
+            $msq = "<span class='error'>Category field must not be empty!</span>";
+            return $msq;
+
+        }
+        else
+        {
+            $query = "UPDATE category SET catName = '$catName' WHERE catId = '$id'";
+            $updated_row = $this->db->update($query);
+            if($updated_row){
+                $msq = "<span class='success'>Category Updated Successfully!</span>";
+                return $msq;
+            }
+            else
+            {
+                $msq = "<span class='error'>Category Not Updated!</span>";
+                return $msq;
+            }
+        }
+    }
+
 }
