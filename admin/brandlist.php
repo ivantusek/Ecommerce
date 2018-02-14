@@ -3,11 +3,11 @@
 <?php  include '../classes/Brand.php'; ?>
 <?php
     $brand = new Brand();
-    if(isset($_GET['delcat'])){
+    if(isset($_GET['delbrand'])){
 
         //$id = $_GET['delcat'];
-    /*    $id = preg_replace('/[^A-Za-z0-9_]/',  '', $_GET['delcat']);
-        $delCat = $cat->delCatById($id); */
+        $id = preg_replace('/[^A-Za-z0-9_]/',  '', $_GET['delbrand']);
+        $delBrand = $brand->delBrandById($id);
 
     }
 
@@ -17,9 +17,9 @@
         <h2>Brand List</h2>
         <div class="block">
             <?php
-         /*   if(isset($delCat)){
-                echo $delCat;
-            } */
+           if(isset($delBrand)){
+                echo $delBrand;
+            }
             ?>
             <table class="data display datatable" id="example">
                 <thead>

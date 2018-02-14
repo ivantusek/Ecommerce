@@ -94,4 +94,20 @@ class Brand{
         }
     }
 
+    public function delBrandById($id){
+
+        // $id = mysqli_real_escape_string($this->db->link, $id);
+        $qurey = "DELETE FROM brand WHERE brandId = '$id'";
+        $deldata =  $this->db->delete($qurey);
+        if($deldata){
+            $msq = "<span class='success'>Brand Name Deleted Successfully!</span>";
+            return $msq;
+        }
+        else
+        {
+            $msq = "<span class='error'>Brand Name Not Deleted!</span>";
+            return $msq;
+        }
+    }
+
 }
