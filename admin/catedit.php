@@ -7,7 +7,8 @@
     }
     else
     {
-        $id = $_GET['catid'];
+        //$id = $_GET['catid'];
+        $id = preg_replace('/[^A-Za-z0-9_]/',  '', $_GET['catid']);
     }
 
     $cat = new Category();

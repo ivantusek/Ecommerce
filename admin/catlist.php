@@ -3,10 +3,11 @@
 <?php  include '../classes/Category.php'; ?>
 <?php
     $cat = new Category();
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if(isset($_GET['delcat'])){
 
-        $catName = $_POST['catName'];
-        $insertCat = $cat->catInsert($catName);
+        $id = $_GET['delcat'];
+        $id = preg_replace('/[^A-Za-z0-9_]/',  '', $_GET['delcat']);
+        $delCat = $cat->delCatById($id);
 
     }
 
@@ -14,7 +15,12 @@
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Category List</h2>
-                <div class="block">        
+                <div class="block">
+                    <?php
+                    if(isset($delCat)){
+                        echo $delCat;
+                    }
+                    ?>
                     <table class="data display datatable" id="example">
 					<thead>
 						<tr>
@@ -35,7 +41,7 @@
 						<tr class="odd gradeX">
 							<td><?php echo $i; ?></td>
 							<td><?php echo $result['catName']; ?></td>
-							<td><a href="catedit.php?catid=<?php echo $result['catId']; ?>">Edit</a> || <a onclick="return confirm('Are you sure to delete?')" href="">Delete</a></td>
+							<td><a href="catedit.php?catid=<?php echo $result['catId']; ?>">Edit</a> || <a onclick="return confirm('Are you sure to delete?')" href="?delcat=<?php echo $result['catId']; ?>">Delete</a></td>
                     <?php  } } ?>
 					</tbody>
 				</table>

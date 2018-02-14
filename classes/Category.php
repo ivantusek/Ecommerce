@@ -93,4 +93,20 @@ class Category{
         }
     }
 
+    public function delCatById($id){
+
+       // $id = mysqli_real_escape_string($this->db->link, $id);
+        $qurey = "DELETE FROM category WHERE catId = '$id'";
+        $deldata =  $this->db->delete($qurey);
+        if($deldata){
+            $msq = "<span class='success'>Category Deleted Successfully!</span>";
+            return $msq;
+        }
+        else
+        {
+            $msq = "<span class='error'>Category Not Deleted!</span>";
+            return $msq;
+        }
+    }
+
 }
