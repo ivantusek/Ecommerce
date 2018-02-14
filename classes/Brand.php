@@ -51,4 +51,12 @@ class Brand{
 
     }
 
+    public function getAllBrand(){
+
+        $query = "SELECT * FROM brand ORDER BY brandId DESC";
+        $result = $this->db->select($query);
+        return $result;
+
+    }
+
 }
