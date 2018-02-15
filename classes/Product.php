@@ -68,7 +68,17 @@ class Product{
 
     public function getAllProduct(){
 
-        $qurey = "SELECT * FROM product ORDER BY productId DESC";
+          $qurey  = "SELECT p.*, c.catName, b.brandName 
+                     FROM product as p, category as c, brand as b
+                     WHERE p.catId = c.catId AND p.brandId = b.brandId
+                     ORDER BY p.productId DESC";
+     /*   $qurey = "SELECT product.*, category.catName, brand.brandName
+                  FROM product
+                  INNER JOIN category ON product.catId = category.catId
+                  INNER JOIN brand ON product.brandId = brand.brandId
+                  ORDER BY product.productId DESC"; */
+
+
         $result = $this->db->select($qurey);
         return $result;
 
