@@ -64,7 +64,13 @@ class Product{
             }
         }
 
+    }
 
+    public function getAllProduct(){
+
+        $qurey = "SELECT * FROM product ORDER BY productId DESC";
+        $result = $this->db->select($qurey);
+        return $result;
 
 
     }
