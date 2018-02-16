@@ -85,4 +85,12 @@ class Product{
 
     }
 
+    public function getProById($id){
+
+        $query = "SELECT * FROM product WHERE productId = '$id'";
+        $result = $this->db->select($query);
+        return $result;
+
+    }
+
 }
