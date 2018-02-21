@@ -1,12 +1,26 @@
 <?php
+    include_once '../lib/Database.php';
+    include_once '../helpers/Format.php';
+?>
 
+<?php
 /**
- * Created by PhpStorm.
- * User: Ivan
- * Date: 02/21/18
- * Time: 14:55
+ * Cart class
  */
-class Cart
-{
+class Cart{
+
+    private $db;
+    private $fm;
+
+
+    public function __construct()
+    {
+
+        $this->db = new Database();
+        $this->fm = new Format();
+
+    }
+
+
 
 }

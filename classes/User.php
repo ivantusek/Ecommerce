@@ -1,12 +1,26 @@
 <?php
+    include_once '../lib/Database.php';
+    include_once '../helpers/Format.php';
+?>
+
+<?php
 
 /**
- * Created by PhpStorm.
- * User: Ivan
- * Date: 02/21/18
- * Time: 14:58
+ * User class
  */
-class User
-{
+class User{
+
+    private $db;
+    private $fm;
+
+
+    public function __construct()
+    {
+
+        $this->db = new Database();
+        $this->fm = new Format();
+
+    }
+
 
 }
