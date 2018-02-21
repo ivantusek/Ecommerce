@@ -183,6 +183,29 @@ class Product
 
     }
 
+    public function delProById($id){
+
+        $query = "SELECT * FROM product WHERE productId = '$id'";
+        $getData = $this->db->select($query);
+
+        if ($getData) {
+            while ($delImg = $getData->fetch_assoc()) {
+                $dellink = $delImg['image'];
+                unlink($dellink);
+            }
+        }
+
+        $delqurey = "DELETE FROM product  WHERE productId = '$id' ";
+        $deldata = $this->db->delete($delqurey);
+        if ($deldata) {
+            $msq = "<span class='success'>Product Deleted Successfully!</span>";
+            return $msq;
+        } else {
+            $msq = "<span class='error'>Product Not Deleted!</span>";
+            return $msq;
+        }
+    }
+
 
 
 
