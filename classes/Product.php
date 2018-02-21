@@ -215,6 +215,26 @@ class Product
         return $result;
     }
 
+    public function getNewProduct(){
+
+        $query = "SELECT * FROM product ORDER BY productId DESC LIMIT 4";
+        $result = $this->db->select($query);
+        return $result;
+
+
+    }
+
+    public function getSingleProduct($id){
+
+        $qurey = "SELECT p.*, c.catName, b.brandName 
+                     FROM product as p, category as c, brand as b
+                     WHERE p.catId = c.catId AND p.brandId = b.brandId  AND productId = '$id'
+                     ORDER BY p.productId DESC";
+
+        $result = $this->db->select($qurey);
+        return $result;
+    }
+
 
 
 
