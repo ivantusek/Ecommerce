@@ -1,6 +1,7 @@
 <?php
-    include_once '../lib/Database.php';
-    include_once '../helpers/Format.php';
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../lib/Database.php');
+    include_once ($filepath.'/../helpers/Format.php');
 ?>
 
 
@@ -206,6 +207,13 @@ class Product
         }
     }
 
+
+    public function getFetauredProduct(){
+
+        $query = "SELECT * FROM product WHERE type = '0' ORDER BY productId DESC LIMIT 4";
+        $result = $this->db->select($query);
+        return $result;
+    }
 
 
 
