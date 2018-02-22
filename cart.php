@@ -1,10 +1,29 @@
 <?php include 'inc/header.php'; ?>
 
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $cartId     = $_POST['cartId'];
+        $quantity   = $_POST['quantity'];
+        $updateCart = $ct->updateCartQuantity($cartId, $quantity);
+      /*  if ($quantity <= 0){
+            $delProduct = $ct->delProCart($cartId);
+        } */
+    }
+?>
+
  <div class="main">
     <div class="content">
     	<div class="cartoption">		
 			<div class="cartpage">
 			    	<h2>Your Cart</h2>
+                        <?php
+                            if(isset($updateCart)){
+                                echo $updateCart;
+                            }
+                            if(isset($delProduct)){
+                                echo $delProduct;
+                            }
+                        ?>
 						<table class="tblone">
 							<tr>
                                 <th width="5%">SL</th>
