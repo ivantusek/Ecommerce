@@ -40,11 +40,11 @@
                                 <th width="10%">Action</th>
 							</tr>
                             <?php
-                                    $sum = 0;
-                                    $gTotal=0;
                                     $getPro = $ct->getCartProduct();
                                     if ($getPro){
                                         $i = 0;
+                                        $sum = 0;
+                                        $gty = 0;
                                         while ($result = $getPro->fetch_assoc()){
                                             $i++;
                             ?>
@@ -63,12 +63,19 @@
                                  <td>$
                                  <?php $total = ($result['price'] * $result['quantity'] );
                                     echo $total;
+                                    $gty = $gty + $result['quantity'];
                                     $sum = $sum + $total;
+                                    Session::set("quantity", $gty);
+                                    Session::set("sum", $sum);
                                  ?></td>
                                 <td><a onclick = "return confirm('are you sure to delete !!');" href="?delpro=<?php echo $result['cartId'];?>">X</a></td>
                             </tr>
                         <?php } } ?>
 						</table>
+                            <?php
+                            $getData = $ct->checkCartTable();
+                            if($getData){
+                                ?>
                 <table style="float:right;text-align:left;" width="40%">
                     <tr>
                         <th>Sub Total : </th>
@@ -80,12 +87,16 @@
                     </tr>
                     <tr>
                         <th>Grand Total :</th>
-                        <td>$ <?php $gTotal = $sum + $vat;
-                            echo $gTotal;
+                        <td>$ <?php $gty = $sum + $vat;
+                            echo $gty;
                             ?>
                         </td>
                     </tr>
                 </table>
+                            <?php }else{
+                                echo "Cart empty! Please shop now!";
+                            }
+                            ?>
 					</div>
 					<div class="shopping">
 						<div class="shopleft">
