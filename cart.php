@@ -7,97 +7,61 @@
 			    	<h2>Your Cart</h2>
 						<table class="tblone">
 							<tr>
-								<th width="20%">Product Name</th>
-								<th width="10%">Image</th>
-								<th width="15%">Price</th>
-								<th width="25%">Quantity</th>
-								<th width="20%">Total Price</th>
-								<th width="10%">Action</th>
+                                <th width="5%">SL</th>
+                                <th width="25%">Product Name</th>
+                                <th width="10%">Image</th>
+                                <th width="15%">Price</th>
+                                <th width="5%">Quantity</th>
+                                <th width="15%">Total Price</th>
+                                <th width="10%">Action</th>
 							</tr>
-							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
-								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
-							
-							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
-								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
-							
-							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
-								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
-							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
-								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
-							
-							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
-								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
-							
+                            <?php
+                                    $sum = 0;
+                                    $gTotal=0;
+                                    $getPro = $ct->getCartProduct();
+                                    if ($getPro){
+                                        $i = 0;
+                                        while ($result = $getPro->fetch_assoc()){
+                                            $i++;
+                            ?>
+                             <tr>
+                                 <td><?php echo $i;?></td>
+                                 <td><?php echo $result['productName'];?></td>
+                                 <td><img src="admin/<?php echo $result['image'];?>" alt=""/></td>
+                                 <td>$<?php echo $result['price'];?></td>
+                                 <td>
+                                 <form action="" method="POST">
+                                    <input type="hidden" name="cartId" value="<?php echo $result['cartId'];?>"/>
+                                    <input type="number" name="quantity" value="<?php echo $result['quantity'];?>"/>
+                                    <input type="submit" name="submit" value="Update"/>
+                                </form>
+                                 </td>
+                                 <td>$
+                                 <?php $total = ($result['price'] * $result['quantity'] );
+                                    echo $total;
+                                    $sum = $sum + $total;
+                                 ?></td>
+                                <td><a onclick = "return confirm('are you sure to delete !!');" href="?delpro=<?php echo $result['cartId'];?>">X</a></td>
+                            </tr>
+                        <?php } } ?>
 						</table>
-						<table style="float:right;text-align:left;" width="40%">
-							<tr>
-								<th>Sub Total : </th>
-								<td>TK. 210000</td>
-							</tr>
-							<tr>
-								<th>VAT : </th>
-								<td>TK. 31500</td>
-							</tr>
-							<tr>
-								<th>Grand Total :</th>
-								<td>TK. 241500 </td>
-							</tr>
-					   </table>
+                <table style="float:right;text-align:left;" width="40%">
+                    <tr>
+                        <th>Sub Total : </th>
+                        <td>$<?php echo $sum;?></td>
+                    </tr>
+                    <tr>
+                        <th>VAT :20% </th>
+                        <td>$<?php echo $vat = ($sum * 0.1);?></td>
+                    </tr>
+                    <tr>
+                        <th>Grand Total :</th>
+                        <td>$<?php $gTotal = $sum + $vat;
+                            echo $gTotal;
+                            ?>
+                        </td>
+                    </tr>
+                </table>
 					</div>
 					<div class="shopping">
 						<div class="shopleft">
