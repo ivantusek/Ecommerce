@@ -1,13 +1,18 @@
 <?php include 'inc/header.php'; ?>
-
+<?php
+    if (isset($_GET['delpro'])){
+        $delId = preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['delpro']);
+        $delProduct = $ct->delProductByCart($delId);
+    }
+?>
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $cartId     = $_POST['cartId'];
         $quantity   = $_POST['quantity'];
         $updateCart = $ct->updateCartQuantity($cartId, $quantity);
-      /*  if ($quantity <= 0){
-            $delProduct = $ct->delProCart($cartId);
-        } */
+            if ($quantity <= 0){
+                $delProduct = $ct->delProductByCart($cartId);
+        }
     }
 ?>
 
@@ -67,15 +72,15 @@
                 <table style="float:right;text-align:left;" width="40%">
                     <tr>
                         <th>Sub Total : </th>
-                        <td>$<?php echo $sum;?></td>
+                        <td>$ <?php echo $sum;?></td>
                     </tr>
                     <tr>
-                        <th>VAT :20% </th>
-                        <td>$<?php echo $vat = ($sum * 0.1);?></td>
+                        <th>VAT :10% </th>
+                        <td><?php echo $vat = ($sum * 0.1);?>%</td>
                     </tr>
                     <tr>
                         <th>Grand Total :</th>
-                        <td>$<?php $gTotal = $sum + $vat;
+                        <td>$ <?php $gTotal = $sum + $vat;
                             echo $gTotal;
                             ?>
                         </td>

@@ -76,7 +76,19 @@ class Cart{
             $msg = "<span class='success'>Quantity updated successfuly! </span>";
             return $msg;
         } else{
-            $msg = "<span class='error'>Quantity NOT Updated! </span>";
+            $msg = "<span class='error'>Quantity not Updated! </span>";
+            return $msg;
+        }
+    }
+
+    public function delProductByCart($delId)
+    {
+        $delquery = "DELETE FROM cart WHERE cartId = '$delId'";
+        $deldata = $this->db->delete($delquery) ;
+        if ($deldata){
+            echo "<script> window.location='cart.php';</script> ";
+        } else{
+            $msg = "<span class='error'>Product not deleted! </span>";
             return $msg;
         }
     }
