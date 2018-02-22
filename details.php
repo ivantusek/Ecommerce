@@ -42,9 +42,17 @@
 				<div class="add-cart">
 					<form action="" method="post">
 						<input type="number" class="buyfield" name="quantity" value="1"/>
-						<input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
+						<input type="submit" class="buysubmit" name="submit" value="Add to Cart"/>
 					</form>				
 				</div>
+
+                    <span style="color:red; font-size:18px;">
+                         <?php
+                         if (isset($addCart)){
+                             echo $addCart ;
+                         }
+                         ?>
+                    </span>
 			</div>
 			<div class="product-desc">
 			<h2>Product Details</h2>

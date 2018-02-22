@@ -36,10 +36,10 @@ class Cart{
         $price = $result['price'];
         $image = $result['image'];
 
-        $query = "SELECT * FROM cart WHERE productId = '$productId' AND sId = '$sId'";
-        $getPro = $this->db->select($query);
+        $chkquery = "SELECT * FROM cart WHERE productId = '$productId' AND sId = '$sId'";
+        $getPro = $this->db->select($chkquery);
         if($getPro){
-            $msg = "Product already added !!!";
+            $msg = "Product already added!";
             return $msg;
         }
         else {
