@@ -18,6 +18,11 @@
                         }
                 ?>
     	<div class="register_account">
+            <?php
+                if (isset($customerReg)){
+                    echo $customerReg;
+                }
+            ?>
     		<h3>Register New Account</h3>
     		<form action="" method="POST">
 		   			 <table>
@@ -52,7 +57,7 @@
 		          </div>
 				  
 				  <div>
-					<input type="text"  name="password" placeholder="Password">
+					<input type="text"  name="pass" placeholder="Password">
 				</div>
 		    	</td>
 		    </tr> 
