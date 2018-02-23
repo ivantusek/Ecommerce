@@ -73,8 +73,9 @@ class Cart{
         $updated_row = $this->db->update($query) ;
         if ($updated_row){
             //echo "<script> window.location='cart.php';</script> ";
-            $msg = "<span class='success'>Quantity updated successfuly! </span>";
-            return $msg;
+            /* $msg = "<span class='success'>Quantity updated successfuly! </span>";
+            return $msg; */
+            header("location:cart.php");
         } else{
             $msg = "<span class='error'>Quantity not Updated! </span>";
             return $msg;
