@@ -261,6 +261,14 @@ class Product
         return $result;
     }
 
+    public function getProductByCat($id)
+    {
+        $catId = mysqli_real_escape_string($this->db->link, $id);
+        $query = "SELECT * FROM product WHERE catId='$catId'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
 
 
 
