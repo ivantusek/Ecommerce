@@ -8,9 +8,9 @@
 <?php
 
 /**
- * User class
+ * Customer class
  */
-class User{
+class Customer{
 
     private $db;
     private $fm;
