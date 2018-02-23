@@ -235,6 +235,32 @@ class Product
         return $result;
     }
 
+    public function latestFromIphone()
+    {
+        $query = "SELECT * FROM product  WHERE brandId = '4' ORDER BY productId DESC LIMIT 1";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+    public function latestFromSamsung()
+    {
+        $query = "SELECT * FROM product  WHERE brandId = '2' ORDER BY productId DESC LIMIT 1";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function latestFromAcer()
+    {
+        $query = "SELECT * FROM product  WHERE brandId = '1' ORDER BY productId DESC LIMIT 1";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function latestFromCanon()
+    {
+        $query = "SELECT * FROM product  WHERE brandId = '3' ORDER BY productId DESC LIMIT 1";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
 
 
 
