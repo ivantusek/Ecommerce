@@ -1,5 +1,5 @@
+<?php include 'inc/header.php'; ?>
 <?php
-    include 'inc/header.php';
     $login = Session::get("cuslogin");
         if ($login == false){
             header("Location:login.php");
