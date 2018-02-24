@@ -103,6 +103,13 @@ class Cart{
 
     }
 
+    public function delCustomerCart()
+    {
+        $sId = session_id();
+        $query = "DELETE FROM cart WHERE sId = '$sId'";
+        $this->db->delete($query);
+    }
+
 
 
 }
