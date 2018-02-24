@@ -77,12 +77,19 @@ class Customer{
                 Session::set("cuslogin", true);
                 Session::set("cmrId", $value['id']);
                 Session::set("cmrName", $value['name']);
-                header("Location:order.php");
+                header("Location:cart.php");
             }
         }else{
             $msg = "<span class='error'> Email or password not match! </span>";
             return $msg;
         }
+    }
+
+    public function getCustomerData($id)
+    {
+        $query = "SELECT * FROM customer  WHERE id = '$id'";
+        $result = $this->db->select($query);
+        return $result;
     }
 
 

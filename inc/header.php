@@ -106,7 +106,17 @@
             <li><a href="index.php">Home</a></li>
             <li><a href="products.php">Products</a> </li>
             <li><a href="topbrands.php">Top Brands</a></li>
-            <li><a href="cart.php">Cart</a></li>
+            <?php
+                $chkcCart = $ct->checkCartTable();
+                if($chkcCart){ ?>
+                   <li><a href="cart.php">Cart</a></li>
+            <?php }?>
+            <?php
+                $login = Session::get("cuslogin");
+                if ($login == true){
+                    ?>
+                <li><a href="profile.php">Profile</a> </li>
+            <?php }?>
             <li><a href="contact.php">Contact</a> </li>
             <div class="clear"></div>
         </ul>
