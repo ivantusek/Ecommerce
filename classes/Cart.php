@@ -139,6 +139,14 @@ class Cart{
 
     }
 
+    public function getOrderProduct($cmrId)
+    {
+        $query = "SELECT * FROM tbl_order WHERE cmrId = '$cmrId' ORDER BY date DESC ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+
 
 
 }
