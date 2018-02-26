@@ -45,7 +45,7 @@ class Cart{
         else {
             $query = "INSERT INTO cart(sId, productId, productName, price, quantity, image) "
                 . "VALUES('$sId','$productId','$productName','$price','$quantity','$image')";
-            $inserted_row = $this->db->insert($query) ;
+            $inserted_row = $this->db->insert($query);
             if ($inserted_row){
                 header("location:cart.php");
             } else{
@@ -108,6 +108,35 @@ class Cart{
         $sId = session_id();
         $query = "DELETE FROM cart WHERE sId = '$sId'";
         $this->db->delete($query);
+    }
+
+    public function orderProduct($cmrId)
+    {
+        $sId = session_id();
+        $query = "SELECT * FROM cart WHERE sId = '$sId' ";
+        $getPro = $this->db->select($query);
+
+        if ($getPro) {
+            while ($result = $getPro->fetch_assoc()) {
+                $productId = $result['productId'];
+                $productName = $result['productName'];
+                $quantity = $result['quantity'];
+                $price = $result['price'] * $quantity;
+                $image = $result['image'];
+
+                $query = "INSERT INTO tbl_order(cmrId, productId, productName, quantity, price, image) 
+                          VALUES('$cmrId','$productId','$productName','$quantity','$price','$image')";
+                $inserted_row = $this->db->insert($query);
+            }  }
+
+    }
+
+    public function payableAmount($cmrId)
+    {
+        $query = "SELECT price FROM tbl_order WHERE cmrId = '$cmrId' AND date = now() ";
+        $result = $this->db->select($query);
+        return $result;
+
     }
 
 

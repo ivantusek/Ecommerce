@@ -6,6 +6,14 @@
         header("Location:login.php");
     }
 ?>
+<?php
+    if (isset($_GET['orderid']) && $_GET['orderid'] == 'order') {
+        $cmrId = Session::get("cmrId");
+        $insertOrder = $ct->orderProduct($cmrId);
+        $delData = $ct->delCustomerCart();
+        header("Location:success.php");
+    }
+?>
     <style>
         .division
         {
