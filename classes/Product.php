@@ -354,6 +354,14 @@ class Product
         }
     }
 
+    public function getWlistData($cmrId)
+    {
+        $query = "SELECT * FROM wlist WHERE cmrId = '$cmrId' ORDER BY id DESC  ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+
 
 
 

@@ -128,11 +128,16 @@
                 <li><a href="profile.php">Profile</a> </li>
             <?php }?>
             <?php
-                $cmrId = Session::get("cmrId");
                 $getpd = $pd->getCompareData($cmrId);
                 if ($getpd) {
             ?>
             <li><a href="compare.php">Compare</a> </li>
+            <?php } ?>
+            <?php
+                $chekWlist = $pd->getWlistData($cmrId);
+                if ($chekWlist) {
+                ?>
+                <li><a href="wishlist.php">WishList</a> </li>
 
             <?php } ?>
             <li><a href="contact.php">Contact</a> </li>
