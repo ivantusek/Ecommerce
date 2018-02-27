@@ -269,6 +269,42 @@ class Product
         return $result;
     }
 
+    public function insertCompareData($cmprid,$cmrId)
+    {
+        $cmrId 	    = mysqli_real_escape_string($this->db->link, $cmrId);
+        $productId 	= mysqli_real_escape_string($this->db->link, $cmprid);
+
+        $cquery = "SELECT * FROM compare WHERE cmrId = '$cmrId' AND productId = '$productId' ";
+        $check = $this->db->select($cquery);
+        if ($check) {
+            $msg = " <span class='error'>Already Compare!</span> ";
+            return $msg;
+        }
+
+        $query = "SELECT * FROM product WHERE productId = '$productId' ";
+        $result = $this->db->select($query)->fetch_assoc();
+
+        if ($result) {
+            $productId = $result['productId'];
+            $productName = $result['productName'];
+            $price = $result['price'];
+            $image = $result['image'];
+
+            $query = " INSERT INTO compare(cmrId, productId, productName, price, image) VALUES('$cmrId','$productId','$productName','$price','$image')";
+            $inserted_row = $this->db->insert($query);
+
+
+            if ($inserted_row) {
+                $msg = " <span class='success'>Added to Compare!</span> ";
+                return $msg;
+            }else{
+                $msg = " <span class='error'>Not Added! </span> ";
+                return $msg;
+            }
+        }
+
+    }
+
 
 
 

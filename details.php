@@ -17,6 +17,14 @@
     }
 
 ?>
+<?php
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['compare']) ) {
+        $productId = $_POST['productId'];
+        $insertCom = $pd->insertCompareData($productId, $cmrId);
+    }
+?>
+
 
  <div class="main">
     <div class="content">
@@ -48,14 +56,19 @@
 
                     <span style="color:red; font-size:18px;">
                          <?php
-                         if (isset($addCart)){
-                             echo $addCart ;
-                         }
+                             if (isset($addCart)){
+                                 echo $addCart ;
+                             }
                          ?>
-                    </span><br/>
-                    <div class="mybutton">
-                        <form action="" method="post">
-                            <input type="submit" class="buysubmit" name="wlist" value="Save to List"/>
+                    </span>
+                        <?php
+                            if (isset($insertCom)){
+                                echo $insertCom ;
+                            }
+                        ?>
+                    <div class="add-cart">
+                        <form action="" method="POST">
+                            <input type="hidden" class="buyfield" name="productId" value="<?php echo $result['productId']; ?>"/>
                             <input type="submit" class="buysubmit" name="compare" value="Add to Compare"/>
                         </form>
                     </div>

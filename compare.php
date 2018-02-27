@@ -30,14 +30,13 @@
                             <th>Image</th>
                             <th>Action</th>
                         </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>/td>
-                                </tr>
-
+                        <tr>
+                            <td><?php echo $i; ?></td>
+                            <td><?php echo $result['productName']; ?></td>
+                            <td>$<?php echo $result['price']; ?></td>
+                            <td><img src="admin/<?php echo $result['image']; ?>" alt=""/></td>
+                            <td><a href="details.php?proid=<?php echo $result['productId']; ?>">View</a></td>
+                        </tr>
 
                     </table>
 
