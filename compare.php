@@ -6,8 +6,6 @@
         header("Location:login.php");
     }
 ?>
-
-
     <style>
         table.tblone img
         {
