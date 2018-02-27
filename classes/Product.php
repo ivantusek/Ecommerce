@@ -313,6 +313,13 @@ class Product
         return $result;
     }
 
+    public function delCompareData($cmrId)
+    {
+        $query = "DELETE FROM compare WHERE cmrId = '$cmrId' ";
+        $deldata = $this->db->delete($query);
+    }
+
+
 
 
 

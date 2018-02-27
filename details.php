@@ -66,33 +66,47 @@
                                 echo $insertCom ;
                             }
                         ?>
-                    <div class="add-cart">
-                        <form action="" method="POST">
-                            <input type="hidden" class="buyfield" name="productId" value="<?php echo $result['productId']; ?>"/>
-                            <input type="submit" class="buysubmit" name="compare" value="Add to Compare"/>
-                        </form>
-                    </div>
-			</div>
-			<div class="product-desc">
-			<h2>Product Details</h2>
-			<p><?php echo $result['body']; ?></p>
-	    </div>
-				<?php }} ?>
-	</div>
-				<div class="rightsidebar span_3_of_1">
-					<h2>CATEGORIES</h2>
-                    <ul>
+
                         <?php
-                        $getCat = $cat->getAllCat($id);
-                        if ($getCat){
-                            while ($result = $getCat->fetch_assoc()){
-                                ?>
-                                <li><a href="productbycat.php?catId=<?php echo $result['catId'];?>"><?php echo $result['catName'];?></a></li>
+                                $login = Session::get("cuslogin");
+                                if ($login == true) {
+
+
+                        ?>
+                                    <div class="add-cart">
+                                        <div class="mybutton">
+                                            <form action="" method="post">
+                                                <input type="hidden" class="buyfield" name="productId" value="<?php echo $result['productId']; ?>"/>
+                                                <input type="submit" class="buysubmit" name="compare" value="Add to Compare"/>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                <?php } ?>
+
+                </div>
+                                <div class="product-desc">
+                                    <h2>Product Details</h2>
+                                    <?php echo $result['body']; ?>
+                                </div>
                             <?php } } ?>
-                    </ul>
-    	
- 				</div>
- 		</div>
- 	</div>
-	</div>
-<?php include 'inc/footer.php'; ?>
+                </div>
+            <div class="rightsidebar span_3_of_1">
+                <h2>CATEGORIES</h2>
+                <ul>
+                    <?php
+                    $getCat = $cat->getAllCat();
+                    if ($getCat) {
+                        while ($result = $getCat->fetch_assoc()) {
+
+
+                            ?>
+                            <li><a href="productbycat.php?catId=<?php  echo $result['catId']; ?>"> <?php  echo $result['catName']; ?> </a></li>
+                        <?php } } ?>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+ </div>
+<?php include 'inc/footer.php';?>
