@@ -306,6 +306,14 @@ class Product
     }
 
 
+    public function getCompareData($cmrId)
+    {
+        $query = "SELECT * FROM compare WHERE cmrId = '$cmrId' ORDER BY id DESC  ";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+
 
 
 }

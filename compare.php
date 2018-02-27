@@ -30,14 +30,23 @@
                             <th>Image</th>
                             <th>Action</th>
                         </tr>
+                        <?php
+                            $cmrId = Session::get("cmrId");
+                            $getpd = $pd->getCompareData($cmrId);
+                            if ($getpd) {
+                                $i = 0;
+                                while ($result = $getpd->fetch_assoc()) {
+                                    $i++;
+
+                        ?>
                         <tr>
                             <td><?php echo $i; ?></td>
                             <td><?php echo $result['productName']; ?></td>
-                            <td>$<?php echo $result['price']; ?></td>
+                            <td>$ <?php echo $result['price']; ?></td>
                             <td><img src="admin/<?php echo $result['image']; ?>" alt=""/></td>
                             <td><a href="details.php?proid=<?php echo $result['productId']; ?>">View</a></td>
                         </tr>
-
+                        <?php  } } ?>
                     </table>
 
 
