@@ -8,10 +8,11 @@
 ?>
 
 <?php
-    if (isset($_GET['confiremd'])) {
-        $id = $_GET['confiremd'];
+    if (isset($_GET['customerid'])) {
+        $id = $_GET['customerid'];
         $time = $_GET['time'];
         $price = $_GET['price'];
+        $confirm = $ct->productShiftConfirm($id,$time,$price);
 
     }
 ?>
@@ -67,10 +68,12 @@
                                     </td>
                                     <?php
                                         if ($result['status'] == '1') { ?>
-                                            <td><a onclick="return confirm('Are you sure to delete?')" href="">X</a></td>
-                                        <?php	}else{ ?>
+                                            <td><a href="?customerid=<?php echo $cmrId; ?>&price=<?php echo $result['price']; ?>&time=<?php echo $result['date']; ?>">Confirm</a></td>
+                                        <?php	}elseif($result['status'] == '2'){ ?>
+                                            <td>OK</td>
+                                        <?php }elseif($result['status'] == '0'){ ?>
                                             <td>N/A</td>
-                                        <?php } ?>
+                                    <?php } ?>
                                 </tr>
 
 

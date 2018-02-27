@@ -16,6 +16,14 @@
 
     }
 
+    if (isset($_GET['delproid'])) {
+        $id = $_GET['delproid'];
+        $time = $_GET['time'];
+        $price = $_GET['price'];
+        $delorder = $ct->delProductShifted($id,$time,$price);
+
+    }
+
 ?>
 
 <div class="grid_10">

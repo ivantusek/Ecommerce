@@ -181,6 +181,47 @@ class Cart{
             }
     }
 
+    public function delProductShifted($id,$time,$price)
+    {
+        $id     = mysqli_real_escape_string($this->db->link, $id);
+        $time   = mysqli_real_escape_string($this->db->link, $time);
+        $price  = mysqli_real_escape_string($this->db->link, $price);
+
+        $query =" DELETE FROM tbl_order WHERE cmrId = '$id' AND date = '$time' AND price = '$price' ";
+        $deldata = $this->db->delete($query);
+        if ($deldata) {
+            $msg =" <span class='success'>Data deleted Sucessfully!</span> ";
+            return $msg;
+        }else{
+            $msg =" <span class='error'>Data not Deleted! </span> ";
+            return $msg;
+
+        }
+    }
+
+    public function productShiftConfirm($id,$time,$price)
+    {
+        $id     = mysqli_real_escape_string($this->db->link, $id);
+        $time   = mysqli_real_escape_string($this->db->link, $time);
+        $price  = mysqli_real_escape_string($this->db->link, $price);
+
+
+        $query = "UPDATE tbl_order
+				SET
+				status = '2'
+				WHERE cmrId = '$id' AND date = '$time' AND price = '$price' ";
+        $updated_row = $this->db->update($query);
+        if ($updated_row) {
+            $msg = " <span class='success'>Update Sucessfully!</span> ";
+            return $msg;
+        }else{
+            $msg = " <span class='error'>Not Updated!</span> ";
+            return $msg;
+        }
+
+    }
+
+
 
 
 
