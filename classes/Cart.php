@@ -153,6 +153,14 @@ class Cart{
         return $result;
     }
 
+    public function getAllOrderProduct()
+    {
+        $query = "SELECT * FROM tbl_order ORDER BY date DESC ";
+        $result = $this->db->select($query);
+        return $result;
+
+    }
+
 
 
 
