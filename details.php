@@ -52,7 +52,13 @@
                              echo $addCart ;
                          }
                          ?>
-                    </span>
+                    </span><br/>
+                    <div class="mybutton">
+                        <form action="" method="post">
+                            <input type="submit" class="buysubmit" name="wlist" value="Save to List"/>
+                            <input type="submit" class="buysubmit" name="compare" value="Add to Compare"/>
+                        </form>
+                    </div>
 			</div>
 			<div class="product-desc">
 			<h2>Product Details</h2>
