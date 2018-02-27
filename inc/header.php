@@ -114,6 +114,12 @@
 
             <?php }?>
             <?php
+                $cmrId = Session::get("cmrId");
+                $chkOrder = $ct->checkOrder($cmrId);
+                if ($chkOrder) { ?>
+                <li><a href="orderdtails.php">Order</a></li>
+            <?php	} ?>
+            <?php
                 $login = Session::get("cuslogin");
                 if ($login == true){
                     ?>
