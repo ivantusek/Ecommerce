@@ -2,8 +2,8 @@
 Ecommerce CMS.
 
 # Front
-![](https://github.com/ivantusek/Zend-PHP-Certification/blob/screenshot/ecommerce_front.jpg)
+![](https://github.com/ivantusek/Ecommerce-CMS/blob/master/screenshot/ecommerce_front.jpg)
 # Login
-![](https://github.com/ivantusek/Zend-PHP-Certification/blob/screenshot/ecommerce_login_.jpg)
+![](https://github.com/ivantusek/Ecommerce-CMS/blob/master/screenshot/ecommerce_admin_login.jpg)
 # Admin
-![](https://github.com/ivantusek/Zend-PHP-Certification/blob/screenshot/ecommerce_admin.jpg)
+![](https://github.com/ivantusek/Ecommerce-CMS/blob/master/screenshot/ecommerce_admin.jpg)
